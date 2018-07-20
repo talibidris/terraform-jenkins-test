@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "jenkins" {
   ami                    = "ami-b8b45ddf"
-  instance_type          = ""
+  instance_type          = "t2.micro"
   key_name               = ""
   vpc_security_group_ids = ""
   user_data              = ""
@@ -13,6 +13,10 @@ resource "aws_instance" "jenkins" {
     Name        = "jenkins-server"
     Environment = "Development"
   }
+}
+
+resource "template_file" "user_data" {
+  template = "userdata.tpl"
 }
 
 resource "aws_security_group" "jenkins-security-group" {
