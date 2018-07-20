@@ -96,6 +96,3 @@ resource "aws_efs_mount_target" "jenkins-efs-mount-target" {
 #To do add role to attach jenkins server to EFS
 #Consider using s3 instead of EFS
 
-resource "aws_iam_role" "efs-access-role" {
-  
-}
