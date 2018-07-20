@@ -88,7 +88,7 @@ resource "aws_efs_file_system" "jenkins-efs" {
   }
 }
 
-resource "aws_efs_mount_target" "alpha" {
+resource "aws_efs_mount_target" "jenkins-efs-mount-target" {
   file_system_id = "${aws_efs_file_system.jenkins-efs.id}"
   subnet_id      = "${aws_instance.jenkins_master.subnet_id}"
 }
@@ -96,3 +96,6 @@ resource "aws_efs_mount_target" "alpha" {
 #To do add role to attach jenkins server to EFS
 #Consider using s3 instead of EFS
 
+resource "aws_iam_role" "efs-access-role" {
+  
+}
