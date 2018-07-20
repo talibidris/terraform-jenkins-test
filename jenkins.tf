@@ -79,3 +79,20 @@ resource "aws_security_group" "jenkins-worker-security-group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_efs_file_system" "jenkins-efs" {
+  creation_token = "jenkins-efs"
+
+  tags {
+    Name = "jenkins-efs"
+  }
+}
+
+resource "aws_efs_mount_target" "alpha" {
+  file_system_id = "${aws_efs_file_system.jenkins-efs.id}"
+  subnet_id      = "${aws_instance.jenkins_master.subnet_id}"
+}
+
+#To do add role to attach jenkins server to EFS
+#Consider using s3 instead of EFS
+
