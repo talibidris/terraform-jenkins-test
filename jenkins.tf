@@ -2,6 +2,7 @@ provider "aws" {
   region = "eu-west-2"
 }
 
+#Jenkins master server
 resource "aws_instance" "jenkins_master" {
   ami                    = "ami-b8b45ddf"
   instance_type          = "t2.micro"
@@ -15,6 +16,7 @@ resource "aws_instance" "jenkins_master" {
   }
 }
 
+#Jenkins worker server
 resource "aws_instance" "jenkins_slave" {
   ami                    = "ami-b8b45ddf"
   instance_type          = "t2.micro"
@@ -28,6 +30,7 @@ resource "aws_instance" "jenkins_slave" {
   }
 }
 
+#Security group configuration
 resource "aws_security_group" "jenkins-security-group" {
   name        = "jenkins-security-group"
   description = "Allow access to Jenkins server"
@@ -80,6 +83,7 @@ resource "aws_security_group" "jenkins-worker-security-group" {
   }
 }
 
+#EFS volume configuration
 resource "aws_efs_file_system" "jenkins-efs" {
   creation_token = "jenkins-efs"
 
