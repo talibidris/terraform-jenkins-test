@@ -63,7 +63,7 @@ resource "aws_security_group" "jenkins-security-group" {
 
 resource "aws_security_group" "jenkins-worker-security-group" {
   name        = "jenkins-security-group"
-  description = "Allow access to Jenkins server"
+  description = "Allow access to Jenkins worker from master"
 
   ingress {
     from_port   = 22
