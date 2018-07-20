@@ -69,7 +69,7 @@ resource "aws_security_group" "jenkins-worker-security-group" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${aws_instance.jenkins_master.private_ip}/32"]
+    cidr_blocks = ["${aws_instance.jenkins_master.private_ip}/32", "46.255.114.114/32"]
   }
 
   egress {
