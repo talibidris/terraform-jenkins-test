@@ -6,7 +6,7 @@ provider "aws" {
 resource "aws_instance" "jenkins_master" {
   ami                    = "ami-b8b45ddf"
   instance_type          = "t2.micro"
-  key_name               = "codepipeline-ec2-key"
+  key_name               = "ec2-terraform-eu-west-1"
   vpc_security_group_ids = ["${aws_security_group.jenkins-security-group.id}"]
   user_data              = "${file("userdata.tpl")}"
 
@@ -20,7 +20,7 @@ resource "aws_instance" "jenkins_master" {
 resource "aws_instance" "jenkins_slave" {
   ami                    = "ami-b8b45ddf"
   instance_type          = "t2.micro"
-  key_name               = "codepipeline-ec2-key"
+  key_name               = "ec2-terraform-eu-west-1"
   vpc_security_group_ids = ["${aws_security_group.jenkins-worker-security-group.id}"]
   user_data              = "${file("userdata.tpl")}"
 
