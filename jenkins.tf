@@ -4,7 +4,7 @@ provider "aws" {
 
 #Jenkins master server
 resource "aws_instance" "jenkins_master" {
-  ami                    = "ami-b8b45ddf"
+  ami                    = "ami-466768ac"
   instance_type          = "t2.micro"
   key_name               = "ec2-terraform-eu-west-1"
   vpc_security_group_ids = ["${aws_security_group.jenkins-security-group.id}"]
@@ -18,7 +18,7 @@ resource "aws_instance" "jenkins_master" {
 
 #Jenkins worker server
 resource "aws_instance" "jenkins_slave" {
-  ami                    = "ami-b8b45ddf"
+  ami                    = "ami-466768ac"
   instance_type          = "t2.micro"
   key_name               = "ec2-terraform-eu-west-1"
   vpc_security_group_ids = ["${aws_security_group.jenkins-worker-security-group.id}"]
