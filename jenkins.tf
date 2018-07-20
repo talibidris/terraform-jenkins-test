@@ -6,7 +6,7 @@ resource "aws_instance" "jenkins" {
   ami                    = "ami-b8b45ddf"
   instance_type          = "t2.micro"
   key_name               = "codepipeline-ec2-key"
-  vpc_security_group_ids = ["${aws_security_group.jenkins-security-group.GroupId}"]
+  vpc_security_group_ids = ["${aws_security_group.jenkins-security-group.id}"]
   user_data              = "${file("userdata.tpl")}"
 
   tags {
